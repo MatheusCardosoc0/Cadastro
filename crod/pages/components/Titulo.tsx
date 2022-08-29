@@ -5,7 +5,7 @@ export default function Titulo(props:any){
     `}>
       <h1 className={`
       p-3 
-      text-center
+      text-left
       text-2xl font-bold
       `}
       >{props.children}</h1>
