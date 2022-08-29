@@ -4,9 +4,9 @@ export default function Titulo(props:any){
     flex flex-col justify-center
     `}>
       <h1 className={`
-      py-3
+      p-3 
       text-center
-      text-2xl
+      text-2xl font-bold
       `}
       >{props.children}</h1>
       <hr className={`

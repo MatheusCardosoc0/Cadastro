@@ -10,7 +10,7 @@ export default function Layaut(props: LayautProps){
     <div className={`
     flex flex-col
     w-2/3 rounded-lg
-    bg-white text-gray-700
+    bg-gray-700 text-yellow-500
     `}>
       <Titulo>{props.titulo}</Titulo>
       <div className={`
