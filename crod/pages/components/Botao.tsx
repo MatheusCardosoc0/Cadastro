@@ -12,7 +12,7 @@ export default function Button(props: ButtonProps){
   return(
     <button className={`
     ${cor} text-gray-200
-    p-1 rounded-xl
+    p-2 rounded-xl
     ${props.className}
     `}>
       {props.children}
