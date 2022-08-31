@@ -9,6 +9,9 @@ import Tabela from './components/tabela'
 
 const Home: NextPage = () => {
 
+  const [visivel, setVisivel] = useState<'tabela' | 'formulario'>('tabela')
+  const[cliente,setCliente] = useState<Cliente>(Cliente.vazio())
+
   const clientes = [
     new Cliente('Ana', 34, '1'),
     new Cliente('bob', 44, '3'),
@@ -16,7 +19,8 @@ const Home: NextPage = () => {
   ]
 
   function clienteSelecionado(cliente: Cliente) {
-    console.log(cliente.nome)
+    setCliente(cliente)
+    setVisivel('formulario')
   }
 
   function clienteExcluido(cliente: Cliente) {
@@ -25,9 +29,13 @@ const Home: NextPage = () => {
   
   function clienteSalvo(cliente: Cliente){
     console.log(cliente)
+    setVisivel('tabela')
   }
 
-  const [visivel, setVisivel] = useState<'tabela' | 'formulario'>('tabela')
+  function novoCliente(){
+    setCliente(Cliente.vazio())
+    setVisivel('formulario')
+  }
 
 
   return (
@@ -42,7 +50,7 @@ const Home: NextPage = () => {
           <>
             <div className='flex justify-end'>
               <Button className='mb-2' cor='bg-green-500'
-              onClick={e => setVisivel('formulario')} >Novo cliente</Button>
+              onClick={novoCliente} >Novo cliente</Button>
             </div>
 
             <Tabela clientes={clientes}
@@ -52,7 +60,7 @@ const Home: NextPage = () => {
 
           </> :
 
-          <Formulario functionClick={e => setVisivel('tabela')} cliente={clientes[1]}
+          <Formulario functionClick={e => setVisivel('tabela')} cliente={cliente}
           clientChange={clienteSalvo}></Formulario>}
       </Layaut>
     </div>
