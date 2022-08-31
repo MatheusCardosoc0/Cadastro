@@ -6,6 +6,8 @@ import Layaut from "./layaut";
 
 interface FormularioProps {
   cliente: Cliente
+  clientChange?: (cliente: Cliente) => void
+  functionClick?: (valor:any) => void
 }
 
 
@@ -17,8 +19,7 @@ export default function Formulario(props: FormularioProps) {
   const [idade, setIdade] = useState(props.cliente?.idade ?? 0)
 
   return (
-    <div className="bg-gradient-to-br from-blue-600 to-violet-600 h-screen items-center flex justify-center">
-      <Layaut titulo="Formulário">
+    <div>
         <div className={`
       bg-violet-700
       py-3 rounded-xl
@@ -39,11 +40,14 @@ export default function Formulario(props: FormularioProps) {
             onChange={setIdade}></Input>
         </div>
         <div className="flex justify-end gap-4">
-          <Button cor="bg-red-500" className="mt-4">Cancelar</Button>
-          <Button cor="bg-blue-500" className="mt-4">Salvar</Button>
+          <Button cor="bg-red-500" className="mt-4"
+          onClick={props.functionClick}
+          >Cancelar</Button>
+          <Button cor="bg-blue-500" className="mt-4"
+          onClick={() => props.clientChange?.(new Cliente(nome, +idade, id)) }>
+            {id? 'Alterar' : 'Salvar'}
+            </Button>
         </div>
-      </Layaut>
-
     </div>
   )
 }

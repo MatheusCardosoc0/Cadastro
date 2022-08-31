@@ -67,6 +67,7 @@ export default function Tabela(props: TabelaProps) {
       <tbody className="text-slate-700">
         {renderClientes()}
       </tbody>
+      
     </table>
   )
 }
